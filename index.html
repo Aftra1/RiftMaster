@@ -724,7 +724,7 @@ nav{grid-area:nav;justify-content:space-around;border-top:1px solid var(--line)}
 
   <section class="view" id="v-info" hidden>
     <div class="vh"><div><h1>Règles &amp; données</h1><p>Comment la méta du Rift décide de la rareté de tes cartes.</p></div></div>
-    <div class="frame pmove" style="margin-bottom:22px"><h2>Patch 16.23 : ce qui a bougé</h2><p class="foot" id="pmTxt" style="margin:-4px 0 12px"></p><div class="pmg"><div><h4 class="up">▲ En hausse</h4><ol id="pmUp"></ol></div><div><h4 class="dn">▼ En baisse</h4><ol id="pmDn"></ol></div></div></div>
+    <div class="frame pmove" style="margin-bottom:22px"><h2>Patch 26.23 : ce qui a bougé</h2><p class="foot" id="pmTxt" style="margin:-4px 0 12px"></p><div class="pmg"><div><h4 class="up">▲ En hausse</h4><ol id="pmUp"></ol></div><div><h4 class="dn">▼ En baisse</h4><ol id="pmDn"></ol></div></div></div>
     <div class="frame mapf">
       <h2>La carte de la méta</h2>
       <p class="mapl">Chaque point est un champion : plus il est <b>joué</b> (vers la droite) et plus il <b>gagne</b> (vers le haut), plus sa carte est <b>rare</b>. Survole ou touche un point pour voir son nom, clique pour ouvrir sa fiche.</p>
@@ -773,7 +773,7 @@ nav{grid-area:nav;justify-content:space-around;border-top:1px solid var(--line)}
 <div class="flash" id="flash" aria-hidden="true"></div>
 <script>
 {
-const PATCH='16.23', GAMES=301097, DATE='20/11/2026';
+const PATCH='26.23', GAMES=301097, DATE='20/11/2026';
 const RAW_C=`Viego||Roi déchu|FA|J|8.63|50.48|7.7|674|294|2.57
 Kled||Cavalier colérique|F|T|1.8|51.35|0.9|811|427|2.14
 Vex||Ombre du désespoir|M|M|2.71|51.5|3.7|916|215|2.33
@@ -1130,7 +1130,7 @@ const spells=RAW_S.split('\n').map(l=>{const f=l.split('|');return{key:'s:'+f[0]
 const runes=RAW_K.split('\n').map(l=>{const f=l.split('|');return{key:'k:'+f[0],t:'k',id:f[0],name:f[1],cat:f[2],pr:+f[3]}});
 assign(spells,x=>x.pr);assign(runes,x=>x.pr);
 /* archive du patch précédent */
-const ARCH={'16.22':{c:`MonkeyKing|7.78|51.88|5.9
+const ARCH={'26.22':{c:`MonkeyKing|7.78|51.88|5.9
 Thresh|13.81|50.94|12.1
 Zilean|3.23|52.34|1.9
 Fiora|4.43|51.26|6.4
@@ -1303,7 +1303,7 @@ Orianna|5.32|47.35|0.6
 Cassiopeia|2.29|48.05|1.3
 Ryze|2.37|47.44|0.3
 KSante|4.24|45.59|2.8`,i:'2065:1.65;2501:0.63;2502:1.26;2503:4.98;2504:1.62;2510:3.15;2512:0.72;2517:1.75;2520:2.67;2522:0.16;2523:3.14;2524:1.48;2525:0.69;2526:0.04;2530:0.58;3003:0.04;3004:0.08;3006:13.29;3008:4.96;3009:11.34;3020:16.94;3026:3.05;3031:13.14;3032:3.05;3033:2.57;3036:9.48;3040:1.37;3041:2;3042:2;3046:2.17;3047:17.98;3050:2.3;3053:1.92;3065:2.01;3068:1.47;3071:6.57;3072:1.71;3073:1.02;3074:1.33;3075:3.63;3078:5.97;3083:0.45;3084:2.26;3085:2.91;3087:2.1;3089:6.78;3091:0.97;3094:2.37;3095:1.4;3100:4.32;3102:0.78;3107:1.21;3109:3.65;3110:1.87;3111:12.98;3115:1.94;3116:3.44;3118:3.58;3119:0.03;3121:0.3;3124:3.54;3135:1.85;3137:0.65;3139:0.4;3142:2.47;3143:1.81;3146:1.46;3152:3.47;3153:3.98;3156:1.63;3157:9.41;3158:15.92;3161:3.03;3165:0.61;3179:2.27;3181:0.69;3190:6.35;3222:2.01;3302:2.24;3504:2.62;3508:2.76;3742:2.14;3748:1.52;3814:2.47;3869:5.51;3870:4.92;3871:3.58;3876:3.86;3877:2.02;4005:1.63;4401:1.03;4628:0.51;4629:0.62;4633:2.5;4645:11.27;4646:4.75;6333:7.47;6609:0.2;6610:1.45;6616:0.48;6617:3.78;6620:2.43;6621:0.4;6631:2.75;6653:5.24;6655:5.37;6657:1.67;6662:0.71;6664:0.97;6665:1.92;6672:5.68;6673:4.03;6675:2.66;6676:7.41;6692:3.81;6694:1.88;6695:2.05;6696:1.68;6697:3.58;6698:1.89;6699:6.76;8010:0.58;8020:0.33'}};
-const PREV='16.22';
+const PREV='26.22';
 (()=>{const A=ARCH[PREV],low={};for(const c of champs)low[c.id.toLowerCase()]=c;
  const C=A.c.split('\n').map(l=>{const f=l.split('|');const c=low[f[0].toLowerCase()];return c?{c,pr:+f[1],wr:+f[2],ban:+f[3]}:null}).filter(Boolean);
  const P=pct(C,'pr'),W=pct(C,'wr');C.forEach(o=>o.score=(P.get(o)+W.get(o))/2);assign(C,o=>o.score);C.forEach(o=>o.c.prev={pr:o.pr,wr:o.wr,ban:o.ban,r:o.r});
@@ -3289,6 +3289,8 @@ const REG=600000,MAXP=10;
 const fresh=()=>({v:1,coll:{},packs:MAXP,last:Date.now(),pity:0,opened:0,ess:0,seen:{}});
 let S=fresh();
 try{const j=JSON.parse(localStorage.getItem('riftmasters')||'null');if(j&&j.v===1)S=Object.assign(fresh(),j)}catch(e){}
+function fix26(){const fx=v=>typeof v==='string'&&/^1\d\.\d+$/.test(v)?'2'+v.slice(1):v;const b=S.patch+'|'+(S.pron&&S.pron.p);S.patch=fx(S.patch);if(S.pron)S.pron.p=fx(S.pron.p);(S.pronHist||[]).forEach(h=>h.p=fx(h.p));return b!==S.patch+'|'+(S.pron&&S.pron.p)}
+if(fix26())try{localStorage.setItem('riftmasters',JSON.stringify(S))}catch(e){}
 let dbRef=null,writing=false,dirty=false,saveTimer=0;
 const saveTxt=document.getElementById('saveTxt');
 const SV={local:['Local','Collection gardée dans ce navigateur uniquement.'],sync:['Envoi…','Sauvegarde en cours sur ton compte…'],cloud:['Compte','Collection sauvegardée sur ton compte.'],err:['Erreur','Sauvegarde en ligne indisponible : collection gardée dans ce navigateur.']};
@@ -3301,7 +3303,7 @@ async function flush(){if(writing){dirty=true;return}writing=true;
  writing=false;if(dirty){dirty=false;flush()}}
 (async()=>{try{if(!window.claude)return;const[db,user]=await Promise.all([claude.use('db'),claude.use('user')]);if(!db||!user)return;
  const id=await user.id();if(!id)return;const ref=db.doc('data/users/'+id+'/save');const snap=await ref.get();
- if(snap.exists){const d=snap.data();if(d&&d.v===1&&(d.opened||0)>=(S.opened||0)){S=Object.assign(fresh(),JSON.parse(JSON.stringify(d)));try{localStorage.setItem('riftmasters',JSON.stringify(S))}catch(e){}}}
+ if(snap.exists){const d=snap.data();if(d&&d.v===1&&(d.opened||0)>=(S.opened||0)){S=Object.assign(fresh(),JSON.parse(JSON.stringify(d)));fix26();try{localStorage.setItem('riftmasters',JSON.stringify(S))}catch(e){}}}
  dbRef=ref;setSave('cloud');boardDB=db;boardU=user;boardMe=id;boardRef=db.doc('board/'+id);const bT=setTimeout(()=>{if(!board){board=[];renderBoard()}},10000);subTrades();db.collection('board').orderBy('cards','desc').limit(100).onSnapshot(s=>{clearTimeout(bT);board=s.docs.map(d=>({id:d.id,...d.data()}));if(!$('v-prof').hidden)renderBoard()},()=>{clearTimeout(bT);board=board||[];renderBoard()});pushBoard();if(!snap.exists||(snap.data().opened||0)<S.opened)flush();checkPatch();renderAll()}catch(e){setSave('err')}})();
 
 function tick(){const now=Date.now();if(S.packs>=MAXP){S.last=now;return}
@@ -4024,7 +4026,7 @@ function parseCode(t){t=t.trim();if(!t.startsWith('RM1.'))throw 0;const d=JSON.p
 function doImport(){const m=$('bkpMsg');let d;try{d=parseCode($('bkpTxt').value)}catch(e){m.textContent='Code invalide : vérifie que tu as copié tout le code, en commençant par « RM1. ».';return}
  const n=Object.keys(d.coll).filter(k=>BY[k]).length;
  if(!impArmed){impArmed=true;impData=d;$('bkpLoad').textContent=`Confirmer : remplacer par ${n} cartes`;m.textContent=`Ce code contient ${n} cartes différentes et ${d.opened||0} boosters ouverts. Ta collection actuelle (${ownedKeys().length} cartes) sera remplacée.`;return}
- S=Object.assign(fresh(),impData);impArmed=false;save();if(dbRef){clearTimeout(saveTimer);flush()}renderAll();$('bkpBox').hidden=true;toast('Sauvegarde importée');say('Sauvegarde importée')}
+ S=Object.assign(fresh(),impData);fix26();impArmed=false;save();if(dbRef){clearTimeout(saveTimer);flush()}renderAll();$('bkpBox').hidden=true;toast('Sauvegarde importée');say('Sauvegarde importée')}
 $('bkpFileIn').onchange=async e=>{const f=e.target.files[0];if(!f)return;$('bkpTxt').value=(await f.text()).trim();e.target.value='';impArmed=false;doImport()};
 $('expBtn').onclick=()=>bkpMode('exp');$('impBtn').onclick=()=>bkpMode('imp');
 $('bkpTxt').addEventListener('input',()=>{if(impArmed){impArmed=false;const b=$('bkpLoad');if(b)b.textContent='Charger ce code'}});

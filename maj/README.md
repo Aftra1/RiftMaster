@@ -19,6 +19,9 @@ la rareté de chaque carte possédée avec celle du patch précédent et affiche
    qui télécharge `riftmasters-images.zip`.
 4. Remplacer les données et images, republier.
 
+**Numéro de patch affiché :** DPM.LOL et Data Dragon utilisent encore l'ancienne numérotation (ex. `16.23`), alors que le patch officiel s'appelle `26.23`.
+Dans `index.html`, `PATCH`, `PREV` et la clé de `ARCH` doivent utiliser le numéro officiel (`26.xx`) ; garder `16.xx` uniquement pour les appels à DPM.LOL et Data Dragon.
+
 Régions (collections thématiques) : la chaîne `REGM` (`id:region,...`) vient de
 https://universe-meeps.leagueoflegends.com/v1/fr_fr/search/index.json (champ `associated-faction-slug`),
 lue depuis un onglet ouvert sur https://universe.leagueoflegends.com/fr_fr/ — voir `etape5_regions(ids)`.
