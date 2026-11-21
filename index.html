@@ -39,7 +39,7 @@ button{font:inherit;cursor:pointer;color:inherit}
 .play::before{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(0 0,100% 0,88% 100%,0 100%);background:linear-gradient(180deg,var(--gold),var(--g2))}
 .play::after{content:"";position:absolute;inset:2px;z-index:-1;clip-path:polygon(0 0,100% 0,88.3% 100%,0 100%);background:linear-gradient(180deg,#0e3d4e,#06212c 60%,#0a5c66);box-shadow:inset 0 0 18px rgba(10,200,185,.5)}
 .play:hover:not(:disabled)::after{background:linear-gradient(180deg,#14657a,#0a3442 60%,#0ac8b9)}
-.play:disabled{color:var(--dim)}.play:disabled::before{background:#3c3c41}.play:disabled::after{background:#1e2328;box-shadow:none}
+.play[aria-current=true]::after{background:linear-gradient(180deg,#14657a,#0a3442 60%,#0ac8b9)}.play:disabled{color:var(--dim)}.play:disabled::before{background:#3c3c41}.play:disabled::after{background:#1e2328;box-shadow:none}
 nav{display:flex;align-items:stretch;gap:2px;overflow-x:auto;scrollbar-width:none;border-left:1px solid var(--line)}
 nav button{position:relative;min-height:44px;padding:0 20px;border:0;background:none;font:800 13.5px Cinzel,serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 nav button:hover{color:var(--gold2)}
@@ -602,9 +602,9 @@ nav{grid-area:nav;justify-content:space-around;border-top:1px solid var(--line)}
     <span class="lvt" id="lvTopW"><svg viewBox="0 0 40 44" aria-hidden="true"><polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="#010a13" stroke="#c8aa6e" stroke-width="2"/><polygon points="20,9 32,16 32,28 20,35 8,28 8,16" fill="none" stroke="#0ac8b9" stroke-width="1.5"/><path d="M14 14h8a5 5 0 0 1 0 10h-3l6 7h-4l-6-7v7h-1z" fill="#c8aa6e"/></svg><i id="lvTop">1</i></span>
     <span><b>RIFT MASTERS</b><small>Cartes à collectionner · méta Ranked Solo/Duo</small></span>
   </div>
-  <button class="play" id="playBtn">OUVRIR</button>
+  <button class="play" id="playBtn" aria-current="true" title="Aller à l’ouverture des boosters">OUVRIR</button>
   <nav aria-label="Sections">
-    <button data-v="open" aria-current="true">Butin</button>
+    <button data-v="open" aria-current="true" hidden>Butin</button>
     <button data-v="album">Collection</button>
     <button data-v="game">Défi</button>
     <button data-v="prof">Profil</button>
@@ -3418,7 +3418,7 @@ function renderOpen(){const gold=S.pity>=9;const p=$('pack');if(p.dataset.g!==St
  $('buyBtn').textContent=S.ess>=100?'Acheter · 100 essence':`Encore ${100-S.ess} essence`;
  $('hOpened').textContent=S.opened;const bb=S.best&&BY[S.best];$('hBest').innerHTML=bb?`<span style="color:${RAR[bb.r].c}">${esc(bb.name)}</span>`:'—';
  $('hList').innerHTML=(S.hist||[]).length?S.hist.map(x=>{const c=BY[x.b];return c?`<li><i class="dot" style="background:${RAR[c.r].c}"></i><span>${esc(c.name)}</span>${x.g?'<em class="gb">doré</em>':''}<em>${x.n} nouv.</em></li>`:''}).join(''):'<li class="empty">Aucun booster ouvert.</li>';
- $('buyBtn').disabled=S.ess<100;$('themeBtn').textContent=`Booster à thème · ${THC}`;$('pityPips').innerHTML=Array.from({length:10},(_,i)=>`<i class="${i<S.pity?'on':''}${i===9?' g':''}"></i>`).join('');$('playBtn').disabled=S.packs<=0;
+ $('buyBtn').disabled=S.ess<100;$('themeBtn').textContent=`Booster à thème · ${THC}`;$('pityPips').innerHTML=Array.from({length:10},(_,i)=>`<i class="${i<S.pity?'on':''}${i===9?' g':''}"></i>`).join('');
  $('pityTxt').textContent=gold?'Le prochain booster est doré !':`Booster doré dans ${10-S.pity} booster${10-S.pity>1?'s':''}`;
  updTimer()}
 function updTimer(){tick();const t=$('timer');if(S.packs>=MAXP){t.textContent='Réserve pleine';return}
@@ -3458,7 +3458,7 @@ function showCard(k){const c=BY[k],n=cntOf(k),d=$('dlg');
  d.querySelectorAll('[data-vt]').forEach(b=>b.onclick=()=>{const v=S.vit[+b.dataset.vt];const i=v.k.indexOf(k);if(i>=0)v.k.splice(i,1);else{if(v.k.length>=8){toast('Vitrine pleine (8 cartes max)');return}v.k.push(k)}save();showCard(k);renderAll()});if(!d.open)d.showModal()}
 
 /* ---------- événements ---------- */
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-current',x===b));document.querySelectorAll('.view').forEach(v=>v.hidden=v.id!=='v-'+b.dataset.v);if(b.dataset.v==='album')renderAlbum();if(b.dataset.v==='game')setGM(curGM);if(b.dataset.v==='prof'){renderProf();renderSets();renderBoard();renderTrades()}});
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-current',x===b));$('playBtn').setAttribute('aria-current',b.dataset.v==='open');document.querySelectorAll('.view').forEach(v=>v.hidden=v.id!=='v-'+b.dataset.v);if(b.dataset.v==='album')renderAlbum();if(b.dataset.v==='game')setGM(curGM);if(b.dataset.v==='prof'){renderProf();renderSets();renderBoard();renderTrades()}});
 $('stkBtn').onclick=claimStreak;
 $('chestBtn').onclick=openChest;
 $('fuseList').addEventListener('click',e=>{const b=e.target.closest('[data-fz]');if(b)fuse(+b.dataset.fz)});
@@ -3477,7 +3477,7 @@ $('boardOpt').onclick=()=>{S.noBoard=!S.noBoard;boardLast='';save();renderBoard(
 let vdelArm=-1,vdelT=0;
 $('v-prof').addEventListener('click',e=>{const del=e.target.closest('[data-vdel]');if(del){const i=+del.dataset.vdel;if(vdelArm!==i){vdelArm=i;del.textContent='Confirmer';clearTimeout(vdelT);vdelT=setTimeout(()=>{vdelArm=-1;renderProf()},4000);return}vdelArm=-1;S.vit.splice(i,1);save();renderProf();return}
  const el=e.target.closest('.card');if(!el)return;const g=el.closest('.grid');navList=[...g.querySelectorAll('.card')].map(x=>x.dataset.k);navI=navList.indexOf(el.dataset.k);showCard(el.dataset.k)});
-$('pack').onclick=()=>openPack(1);$('openBtn').onclick=()=>openPack(1);$('open5Btn').onclick=()=>openPack(5);$('playBtn').onclick=()=>openPack(1);
+$('pack').onclick=()=>openPack(1);$('openBtn').onclick=()=>openPack(1);$('open5Btn').onclick=()=>openPack(5);$('playBtn').onclick=()=>{document.querySelector('nav button[data-v=open]').click();scrollTo({top:0,behavior:'smooth'})};
 const setAnim=()=>{$('animBtn').textContent=animFast?'Animations rapides':'Animations complètes';$('animBtn').setAttribute('aria-pressed',animFast)};setAnim();$('animBtn').onclick=()=>{animFast=!animFast;try{localStorage.setItem('rm-fast',animFast?'1':'0')}catch(e){}setAnim()};
 const setMute=()=>{$('muteBtn').textContent=muted?'Son coupé':'Son activé';$('muteBtn').setAttribute('aria-pressed',muted)};setMute();$('muteBtn').onclick=()=>{muted=!muted;try{localStorage.setItem('rm-mute',muted?'1':'0')}catch(e){}setMute();if(!muted)chime(3)};
 function setCtx(){const ft=$('fType').value||'all';document.querySelectorAll('#v-album [data-ctx]').forEach(f=>{const on=f.dataset.ctx.split(' ').includes(ft);if(f.hidden!==!on){f.hidden=!on}});
