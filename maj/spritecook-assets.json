@@ -1,0 +1,26 @@
+{
+  "account": "SpriteCook (free tier)",
+  "generated": "2026-11-20",
+  "assets": [
+    {"asset_id": "be2923ae-084a-4fae-ac55-9b8293c62d59", "label": "booster", "file": "ui/booster.webp"},
+    {"asset_id": "87aa0369-1652-4267-afcc-25b37fb57b05", "label": "booster-variante-2-non-utilisee"},
+    {"asset_id": "70db11c3-ae2a-4110-8734-8dace9504c38", "label": "booster-dore", "file": "ui/booster-gold.webp"},
+    {"asset_id": "9594a56d-52d9-464b-bdfb-950103cab94d", "label": "icone-essence", "file": "ui/essence.webp"},
+    {"asset_id": "001ce7f4-5dd6-43f7-bc0a-fe5b62ad35a5", "label": "icone-booster", "file": "ui/pack-icon.webp"},
+    {"asset_id": "1058f8d7-da8e-4f87-a071-ac5cd3bf077a", "label": "trophee", "file": "ui/trophy.webp"},
+    {"asset_id": "ffa685b3-c6ca-4810-a0c1-9d2c602431fc", "label": "blason-demacia", "file": "reg/demacia.webp"},
+    {"asset_id": "8f33324e-cd6c-4c53-9bd9-7ed9e8799e63", "label": "blason-noxus", "file": "reg/noxus.webp"},
+    {"asset_id": "021928ef-ffb9-4131-9f21-6555f8df9edd", "label": "blason-ionia", "file": "reg/ionia.webp"},
+    {"asset_id": "89338f55-8e95-45da-ad8a-8cec31967cdb", "label": "blason-freljord", "file": "reg/freljord.webp"},
+    {"asset_id": "0ca3c3b4-b49f-48a8-a213-3f4e181c2f70", "label": "blason-piltover", "file": "reg/piltover.webp"},
+    {"asset_id": "0c455092-8bf2-4b84-8d1b-7bfe1b88c473", "label": "blason-zaun", "file": "reg/zaun.webp"},
+    {"asset_id": "b5bfa140-7e07-4fb6-a16b-783f85c1326e", "label": "blason-shurima", "file": "reg/shurima.webp"},
+    {"asset_id": "230a82fa-ea6c-46f3-9e9e-b3d0f06d7af1", "label": "blason-targon", "file": "reg/mount-targon.webp"},
+    {"asset_id": "05db563f-197c-40e8-aa94-d1220bc24c90", "label": "blason-iles-obscures", "file": "reg/shadow-isles.webp"},
+    {"asset_id": "f7279cc3-dca9-46ab-946f-31ab70cf3b25", "label": "blason-bilgewater", "file": "reg/bilgewater.webp"},
+    {"asset_id": "2150e022-df99-4f66-9b5a-7bd09172d590", "label": "blason-neant", "file": "reg/void.webp"},
+    {"asset_id": "e44eb7d4-68d2-4876-b91d-f11dd75757ac", "label": "blason-ixtal", "file": "reg/ixtal.webp"},
+    {"asset_id": "9898e14e-7725-49c3-b422-464a99be7b68", "label": "blason-bandle", "file": "reg/bandle-city.webp"},
+    {"asset_id": "83d45e4b-9d43-4ef0-bd78-03551a7548f2", "label": "blason-runeterra", "file": "reg/unaffiliated.webp"}
+  ]
+}
